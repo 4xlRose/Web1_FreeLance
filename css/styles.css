@@ -1,0 +1,284 @@
+:root{
+    --blanco: #ffffff;
+    --oscuro: #212121;
+    --primario: #FFC107;
+    --secundario: #0097A7;
+    --gris: #757575;
+    --gris-claro: #dfe9f3;
+}
+/* GLOBALES */
+html {
+    font-size: 62.5%; 
+    box-sizing: border-box; /*ayuda para box model, y separacion de padding*/
+    scroll-snap-type: y mandatory;
+}
+*,*:before, *:after {
+    box-sizing: inherit;
+}
+body {
+    font-size: 16px; /** 1 rem = 10px**/
+    font-family: 'Krub', sans-serif;
+    background-image: linear-gradient(to top, var(--gris-claro) 0%, var(--blanco) 100%);
+    /*gradiente de clor de abajo hacia arriba*/
+}
+.contenedor {
+    max-width: 120rem;
+    /**margin-top: 0;
+    margin-right: auto;
+    margin-bottom: 0;
+    margin-left: auto;**/
+    margin: 0 auto; /*se utiliza para centrar cuando sean formularios,divs o cuando su padre no sea display flex, si es display flex utilizar justify-content*/
+}
+.boton {
+    background-color: var(--secundario);
+    color: var(--blanco);
+    padding: 1rem 3rem;
+    margin-top: 3rem;
+    font-size: 2rem;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-weight: 700;
+    border-radius: .5rem;
+    width: 90%;
+    text-align: center;
+    border: none;
+}
+@media (min-width: 480px) {
+    .boton {
+        width: auto;
+    }
+}
+.boton:hover {
+    cursor: pointer;
+}
+
+.sombra {
+    -webkit-box-shadow: 0px 5px 15px 0px rgba(112,112,112,0.54);
+    -moz-box-shadow: 0px 5px 15px 0px rgba(112,112,112,0.54);
+    box-shadow: 0px 5px 15px 0px rgba(112,112,112,0.54);
+    background-color: var(--blanco);
+    padding: 2rem;
+    border-radius: 1rem; /*redondear esquinas*/
+}
+
+/** se escalo para usar los rems, ya que se adaptan a los tamanos de varias pantallas**/
+
+/**DESIGN SISTEMS - Tipografia**/
+h1 {
+    font-size: 3.8rem;
+}
+h2 {
+    font-size: 2.8rem;
+}
+h3 {
+    font-size: 1.8rem;
+}
+h1, h2, h3 {
+    text-align: center;
+}
+
+/* Titulos */
+
+.titulo span {
+    font-size: 2rem;
+}
+
+/* Utilidades*/
+.w-sm-100 {
+    width: 100%;
+}
+@media (min-width: 768px) {
+    .w-sm-100 {
+        width: auto;
+    }
+}
+.flex {
+    display: flex;
+}
+.alinear-derecha {
+    justify-content: flex-end;
+}
+
+/* Navegacion principal */
+.nav-bg {
+    background-color: var(--secundario);
+}
+.navegacion-principal {
+    display: flex;
+    flex-direction: column;
+}
+@media (min-width: 768px) {
+    .navegacion-principal{
+        flex-direction: row;
+        justify-content: space-between;
+    }
+}
+
+/* Navegacion */
+.navegacion-principal a {
+    display: block;
+    text-align: center;
+    color: var(--blanco);
+    text-decoration: none;
+    font-size: 2rem;
+    font-weight: 700;
+    padding: 1rem;
+}
+
+.navegacion-principal a:hover {
+    background-color: var(--primario);
+    color: var(--oscuro);
+}
+
+/* hero */
+.hero {
+    background-image: url(../img/hero.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 450px;
+    position: relative;
+    margin-bottom: 2rem; /*para separar el div de hero con el main de la info*/
+}
+
+.contenido-hero {
+    position: absolute;
+    background-color: rgb(0, 0, 0, 0.7); /**sintaxis anterior**/
+    background-color: rgb(0 0 0 / 70%);
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center; /**cuando esta en column con justify alineas verticalmente**/
+}
+
+.contenido-hero h2,
+.contenido-hero p {
+    color: var(--blanco);
+}
+
+.contenido-hero .ubicacion {
+    display: flex;
+    align-items: flex-end; /**alinea verticalmente cuando NO esta en columns**/
+}
+
+
+/* scroll snap */
+.servicios,
+.navegacion-principal,
+.formulario {
+    scroll-snap-align: center;
+    scroll-snap-stop: always;
+}
+
+/* servicios */
+@media (min-width: 768px) {
+    .servicios {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        column-gap: 1rem;
+    }
+}
+
+/*
+.servicios {
+    display: grid; ubicacion y size de elementos, flebox crece automaticamente, grid es un area definida
+    flexbox izq/der o arriba/abajo| grid izq/der y arriba/abajo
+    grid-template-columns: 300px 300px;
+    grid-template-rows: 200px 800px;     
+    grid: 200px 800px / 300px 300px; 
+    grid: rows / columns;
+    grid-template-columns: repeat(3, 1fr); fr de fraccion, y divide en fraccion el espacio dependiendo la cant de fracciones
+    grid-template-columns: 1fr 1fr 1fr;
+}*/
+
+.servicio {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /*como es column, quien alinea los horizontal es align*/
+}
+
+.servicio h3 {
+    color: var(--secundario);
+    font-weight: normal;
+}
+
+.servicio p {
+    line-height: 2;
+    text-align: center;
+}
+
+.servicio .iconos {
+    height: 15rem;
+    width: 15rem;
+    background-color: var(--primario);
+    border-radius: 50%; /*si tienes un cuadrado y pones esquinas del 50% se hace circulo*/
+    display: flex;
+    justify-content: space-evenly; /*alinea horrizontal cuando flex-direcyion es row [row es la default] (en vez de center se uso el space-evenly porque en un circuilo tenemos dos iconos)*/
+    align-items: center; /*alinea vertial cuando flex-direccion es row [row es la default]*/
+}
+
+/* Contacto */
+.formulario {
+    background-color: var(--gris);
+    width: min(60rem, 100%); /*utilizar el valor mas pequeno*/
+    margin: 0 auto; /*se utiliza para centrar cuando sean formularios y cuando su padre no sea display flex, si es display flex utilizar justify-content*/
+    padding: 2rem; /* padding es para separar, es como margen*/
+    border-radius: 1rem;
+}
+
+.formulario fieldset {
+    border: none;
+}
+
+.formulario legend {
+    text-align: center;
+    font-size: 1.8rem;
+    text-transform: uppercase;
+    font-weight: 700;
+    margin-bottom: 2rem;
+    color: var(--primario);
+}
+
+@media (min-width: 768px) {
+    .contenedor-campos {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: auto auto 20rem;
+        column-gap: 1rem;
+    }
+    
+    .campo:nth-child(3),
+    .campo:nth-child(4) {
+        grid-column: 1 / 3; /*grid-column asigna columnas, en este caso de sus lineas, como son dos columnas hay 3 lineas, por ello que vaya de la uno a la 3s*/
+    }
+    
+}
+.campo {
+    margin-bottom: 1rem;
+}
+
+.campo label {
+    color: var(--blanco);
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+    display: block;
+}
+
+.campo textarea {
+    height: 20rem;
+
+}
+
+.input-text {
+    width: 100%;
+    border: none;
+    padding: 1.5rem;
+    border-radius: 0.5rem;
+}
+
+/*footer*/
+.footer {
+    text-align: center;
+}
